@@ -1,3 +1,4 @@
+线性搜索数组中某个数据的具体位置
 import java.util.Scanner;
 
 public class Feb4th {
