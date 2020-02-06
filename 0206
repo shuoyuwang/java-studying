@@ -1,0 +1,35 @@
+一continue的用法
+continue MAIN-LOOP
+注：需要在之前定义一个MAIN-LOOP
+
+二找出前50个素数
+
+算法：从3开始，用x除以已知素数，若是则计入primes（prime——素数） 否则下一个，最后遍历一遍数组输出素数
+
+		int[] primes = new int[50];
+		primes[0] = 2;
+    
+		int cnt = 1;
+    //cnt用来逐个推数组的位置
+    
+		MAIN_LOOP:
+			for ( int x = 3; cnt<primes.length; x++ )
+			{
+      
+				for ( int i=0; i<cnt; i++ )
+				{ 
+        
+					if ( x % primes[i] == 0 )
+					{
+						continue MAIN_LOOP; 
+					}
+         
+				}
+        
+			primes[cnt++] = x;
+			} 
+		for ( int k : primes )
+		{
+			System.out.print(k+" ");
+		}
+	}
