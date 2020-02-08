@@ -1,0 +1,147 @@
+二维数组
+
+int[][] a = new int[3][5]
+//三行五列的二维数组
+
+final变量：
+当你在类中定义变量时，在其前面加上final关键字，那便是说，这个变量一旦被初始化便不可改变
+，这里不可改变的意思对基本类型来说是其值不可变，而对于对象变量来说其引用不可再变。
+
+eclipse退格
+tab往后退 shift+tab向前退
+可以选中多行 再按快捷键
+
+九宫格游戏
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		final int SIZE = 3;
+		int[][] board = new int[SIZE][SIZE];
+		boolean gotResult = false;
+		int numOfx = 0;
+		int numOfO = 0;
+		
+		//读入矩阵
+		for(int i =0; i<SIZE;i++) 
+		{
+			for(int j=0;j<SIZE;j++) 
+			{
+				board[i][j] = in.nextInt();
+			}
+		}
+		
+		//检查行
+		for(int i=0;i<SIZE;i++) 
+		{
+			numOfx=0;
+			numOfO=0;
+			for(int j=0;i<SIZE;i++)
+			{
+				if( board[i][j] == 1 )
+				{
+					numOfx ++;
+				}
+				else
+				{
+					numOfO ++;
+				}
+			}
+		    if ( numOfx == SIZE || numOfO == SIZE )
+		    {
+			gotResult = true ;
+		    break;
+		    }
+		}
+		
+		//检查列
+		if(!gotResult)
+		{
+			for(int i=0;i<SIZE;i++) 
+			{
+				numOfx=0;
+				numOfO=0;
+				for(int j=0;i<SIZE;i++)
+				{
+					if( board[j][i] == 1 )
+					{
+						numOfx ++;
+					}
+					else
+					{
+						numOfO ++;
+					}
+				}
+			    if ( numOfx == SIZE || numOfO == SIZE )
+			    {
+				gotResult = true ;
+			    break;
+			    }
+			}
+		}
+		
+		//检查对角线
+		if(!gotResult)
+		{
+			for(int i=0;i<SIZE;i++) 
+			{
+				numOfx=0;
+				numOfO=0;
+				for(int j=0;i<SIZE;i++)
+				{
+					if( board[i][i] == 1 )
+					{
+						numOfx ++;
+					}
+					else
+					{
+						numOfO ++;
+					}
+				}
+			    if ( numOfx == SIZE || numOfO == SIZE )
+			    {
+				gotResult = true ;
+			    break;
+			    }
+			}
+		}
+		
+		//反对角线
+		if(!gotResult)
+		{
+			for(int i=0;i<SIZE;i++) 
+			{
+				numOfx=0;
+				numOfO=0;
+				for(int j=0;i<SIZE;i++)
+				{
+					if( board[i][SIZE-i-1] == 1 )
+					{
+						numOfx ++;
+					}
+					else
+					{
+						numOfO ++;
+					}
+				}
+			    if ( numOfx == SIZE || numOfO == SIZE )
+			    {
+				gotResult = true ;
+			    break;
+			    }
+			}
+		}
+		
+		//输出结果
+		if ( gotResult ) 
+		{ 
+			if ( numOfx == SIZE ) 
+			{ 
+				System.out.println("X WIN"); 
+			}
+			else 
+			{ 
+				System.out.println("O WIN"); 
+			}
+		}
+		
+	}
